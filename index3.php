@@ -41,9 +41,18 @@
 
 		#footer {
 			background-color: blue;
-			height: 30px;
+			height: 50px;
 			text-align: center;
 			color: white;
+			padding: 2px;
+		}
+
+		#register {
+			padding: 50px;
+		}
+
+		#login {
+			padding: 50px;
 		}
 
 	</style>
@@ -168,34 +177,35 @@
 
 			</div>
 
-			<form action="" method="POST">
-				<table style="padding: 50px 290px">
-					<tr>
-						<td>Username:</td>
-						<td><input type="text" name="uname" value= <?php if(isset($_POST['uname'])) echo $_POST['uname']; ?> ></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input type="password" name="psword" /></td>
-					</tr>
+			<div id="login" align="center">
+				<form action="" method="POST">
+					<table>
 						<tr>
-							<td><input type="submit" name="button" value="Login"></td>
+							<td>Username:</td>
+							<td><input type="text" name="uname" value= <?php if(isset($_POST['uname'])) echo $_POST['uname']; ?> ></td>
+						</tr>
+						<tr>
+							<td>Password:</td>
+							<td><input type="password" name="psword" /></td>
 						</tr>
 					</table>
+					<input type="submit" name="button" value="Login"/>
 				</form>
+			</div>
+
+			<div id="register" align="center">
 				<form action="" method="POST">
-					<table style="padding: 0px 290px">
+					<table>
 						<tr>
-							<td>Role: </td>
+							<tr align="center">Register?</tr>
+							<td>Occupation: </td>
 							<td>
-								Admin <input type="radio" name="role" value="Admin">
-								Student <input type="radio" name="role" value="Student">
+								Admin <input type="radio" name="role" value="Admin"/>
+								Student <input type="radio" name="role" value="Student"/>
 							</td>
 						</tr>
 					</table>
-					<div style="padding: 0px 290px">
-						<td><input type="submit" name="button" value="Register"></td>
-					</div>
+					<input type="submit" name="button" value="Register"/>
 				</form>
 			</div>
 
@@ -203,7 +213,8 @@
 				<p>Copyright 2015 Monmouth University</p>
 			</div>
 		</div>
+	</div>
 
-	</body>
+</body>
 
-	</html>
+</html>

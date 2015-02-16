@@ -22,14 +22,15 @@
 
 		#main {
 			background-color: white;
-			height: 600px;
+			height: 400px;
 		}
 
 		#footer {
 			background-color: blue;
-			height: 30px;
+			height: 50px;
 			text-align: center;
 			color: white;
+			padding: 2px;
 		}
 
 	</style>
@@ -170,88 +171,91 @@
 
 			</div>
 
-			<form action="" method="POST">
-				<table align="center">
-					<tr>
-						<td>Username:</td>
-						<td><input type="text" name="uname" value= <?php if(isset($_POST['uname'])) echo $_POST['uname']; ?> ></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input type="password" name="psword" /></td>
-					</tr>
-					<tr>
-						<td>Confirm Password:</td>
-						<td><input type="password" name="confirm_password" /></td>
-					</tr>
-					<tr>
-						<td>First Name:</td>
-						<td><input type="text" name="fname" value= <?php if(isset($_POST['fname'])) echo $_POST['fname']; ?> ></td>
-					</tr>
-					<tr>
-						<td>Last Name:</td>
-						<td><input type="text" name="lname" value= <?php if(isset($_POST['lname'])) echo $_POST['lname']; ?> ></td>
-					</tr>
-					<tr>
-						<td>Major:</td>
-						<td> 
-							<?php
+			<div id="registration-form">
+				<form action="" method="POST">
+					<table align="center">
+						<tr>
+							<td>Username:</td>
+							<td><input type="text" name="uname" value= <?php if(isset($_POST['uname'])) echo $_POST['uname']; ?> ></td>
+						</tr>
+						<tr>
+							<td>Password:</td>
+							<td><input type="password" name="psword" /></td>
+						</tr>
+						<tr>
+							<td>Confirm Password:</td>
+							<td><input type="password" name="confirm_password" /></td>
+						</tr>
+						<tr>
+							<td>First Name:</td>
+							<td><input type="text" name="fname" value= <?php if(isset($_POST['fname'])) echo $_POST['fname']; ?> ></td>
+						</tr>
+						<tr>
+							<td>Last Name:</td>
+							<td><input type="text" name="lname" value= <?php if(isset($_POST['lname'])) echo $_POST['lname']; ?> ></td>
+						</tr>
+						<tr>
+							<td>Major:</td>
+							<td> 
+								<?php
 
-							$majors = array("CS", "SE", "ART", "EN", "CHEM", "BIO", "COMM", "PHY", "EDU", "MATH");
+								$majors = array("CS", "SE", "ART", "EN", "CHEM", "BIO", "COMM", "PHY", "EDU", "MATH");
 
-							dropDownMenu($majors, "majors", $_POST['majors']);
-							?>
-						</td>
-					</tr>
-					<tr>
-						<td>Address:</td>
-						<td><input type="text" name="address" value= <?php if(isset($_POST['address'])) echo $_POST['address']; ?> ></td>
-					</tr>
-					<tr>
-						<td>City:</td>
-						<td><input type="text" name="city" value= <?php if(isset($_POST['city'])) echo $_POST['city']; ?> ></td>
-					</tr>
-					<tr>
-						<td>
-						State:
-						</td>
-						<td>
-							<?php
+								dropDownMenu($majors, "majors", $_POST['majors']);
+								?>
+							</td>
+						</tr>
+						<tr>
+							<td>Address:</td>
+							<td><input type="text" name="address" value= <?php if(isset($_POST['address'])) echo $_POST['address']; ?> ></td>
+						</tr>
+						<tr>
+							<td>City:</td>
+							<td><input type="text" name="city" value= <?php if(isset($_POST['city'])) echo $_POST['city']; ?> ></td>
+						</tr>
+						<tr>
+							<td>
+								State:
+							</td>
+							<td>
+								<?php
 
-							$state = array('AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID',
-							 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
-							  'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX',
-							   'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY', 'AE', 'AA', 'AP');
+								$state = array('AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID',
+									'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH',
+									'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX',
+									'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY', 'AE', 'AA', 'AP');
 
-							dropDownMenu($state, "state", $_POST['state']);
+								dropDownMenu($state, "state", $_POST['state']);
 
 								?>
 
 							</td>
 						</tr>
-					<tr>
-						<td>Email:</td>
-						<td><input type="text" name="email" value= <?php if(isset($_POST['email'])) echo $_POST['email']; ?> ></td>
-					</tr>
-					<tr>
-						<td>Phone:</td>
-						<td><input type="text" name="phone" value= <?php if(isset($_POST['phone'])) echo $_POST['phone']; ?> ></td>
-					</tr>
-					<tr>
-						<td><input type="hidden" name="role" value= <?php echo $role; ?>></td>
-					</tr>
-					<tr>
-						<td><input type="submit" name="button" value="Register"></td>
-					</tr>
+						<tr>
+							<td>Email:</td>
+							<td><input type="text" name="email" value= <?php if(isset($_POST['email'])) echo $_POST['email']; ?> ></td>
+						</tr>
+						<tr>
+							<td>Phone:</td>
+							<td><input type="text" name="phone" value= <?php if(isset($_POST['phone'])) echo $_POST['phone']; ?> ></td>
+						</tr>
+						<tr>
+							<td><input type="hidden" name="role" value= <?php echo $role; ?>></td>
+						</tr>
+						<tr>
+							<td><input type="submit" name="button" value="Register"></td>
+						</tr>
 					</table>
 				</form>
 			</div>
-
-			<div id="footer">
-				<p>Copyright 2015 Monmouth University</p>
-			</div>
 		</div>
 
-	</body>
+		<div id="footer">
+			<p>Copyright 2015 Monmouth University</p>
+		</div>
+	</div>
+</div>
 
-	</html>
+</body>
+
+</html>
