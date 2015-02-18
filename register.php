@@ -176,7 +176,7 @@
 					<table align="center">
 						<tr>
 							<td>Username:</td>
-							<td><input type="text" name="uname" value= <?php if(isset($_POST['uname'])) echo $_POST['uname']; ?> ></td>
+							<td><input type="text" name="uname" value=" <?php if(isset($_POST['uname'])) echo $_POST['uname']; ?> "></td>
 						</tr>
 						<tr>
 							<td>Password:</td>
@@ -188,11 +188,11 @@
 						</tr>
 						<tr>
 							<td>First Name:</td>
-							<td><input type="text" name="fname" value= <?php if(isset($_POST['fname'])) echo $_POST['fname']; ?> ></td>
+							<td><input type="text" name="fname" value=" <?php if(isset($_POST['fname'])) echo $_POST['fname']; ?> "></td>
 						</tr>
 						<tr>
 							<td>Last Name:</td>
-							<td><input type="text" name="lname" value= <?php if(isset($_POST['lname'])) echo $_POST['lname']; ?> ></td>
+							<td><input type="text" name="lname" value=" <?php if(isset($_POST['lname'])) echo $_POST['lname']; ?> "></td>
 						</tr>
 						<tr>
 							<td>Major:</td>
@@ -207,11 +207,11 @@
 						</tr>
 						<tr>
 							<td>Address:</td>
-							<td><input type="text" name="address" value= <?php if(isset($_POST['address'])) echo $_POST['address']; ?> ></td>
+							<td><input type="text" name="address" value=" <?php if(isset($_POST['address'])) echo $_POST['address']; ?> "></td>
 						</tr>
 						<tr>
 							<td>City:</td>
-							<td><input type="text" name="city" value= <?php if(isset($_POST['city'])) echo $_POST['city']; ?> ></td>
+							<td><input type="text" name="city" value=" <?php if(isset($_POST['city'])) echo $_POST['city']; ?> "></td>
 						</tr>
 						<tr>
 							<td>
@@ -233,11 +233,11 @@
 						</tr>
 						<tr>
 							<td>Email:</td>
-							<td><input type="text" name="email" value= <?php if(isset($_POST['email'])) echo $_POST['email']; ?> ></td>
+							<td><input type="text" name="email" value=" <?php if(isset($_POST['email'])) echo $_POST['email']; ?> "></td>
 						</tr>
 						<tr>
 							<td>Phone:</td>
-							<td><input type="text" name="phone" value= <?php if(isset($_POST['phone'])) echo $_POST['phone']; ?> ></td>
+							<td><input type="text" name="phone" value=" <?php if(isset($_POST['phone'])) echo $_POST['phone']; ?> "></td>
 						</tr>
 						<tr>
 							<td><input type="hidden" name="role" value= <?php echo $role; ?>></td>

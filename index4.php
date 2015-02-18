@@ -1,15 +1,27 @@
 <!-- SE611
 
-	James Reid Cooper
-	Assignment 2
-	2/13/15
-
 	Week 3 of PHP
 	1. create db, tables
 	2. connect to db
 	3. create register.php
 	4. insert user info to table users
-	
+
+	Week 4 of PHP
+	1. sessions
+	2. Includes/css
+	3. student.php
+
+-->
+
+<!--
+
+	Week 4 of PHP
+
+	1. edit_profile.php
+	2. Header/Footer
+	3. student.php
+	4. index4.php
+
 -->
 
 <html>
@@ -122,15 +134,36 @@
 								if ($check_count < 3){
 									if ($row['psword'] == SHA1($psword)){
 
-										echo "This is a valid user.";
+										// echo "This is a valid user.";
 
 									// define a query
 										$q = "UPDATE users SET login_attempts=0, last_login=NOW() WHERE uname = '$uname'";
 
 									// execute the query
 										$r = mysqli_query($dbc, $q);
-										if ($r) echo " Successful Login to Database.";
-										else echo " Sorry, failed connection.";
+										
+										if ($r) {
+											
+										// Week 4 of PHP
+										// start a session
+											session_start();
+
+										//set session variable
+											$_SESSION['uname'] = $uname;
+											$_SESSION['fname'] = $row['fname'];
+
+										//check the role of the user
+										// Student = 0 Admin = 1
+											if($row['role'] == 0){
+												header('LOCATION: student.php');
+											} else {
+												header('LOCATION: admin.php');
+											}
+										//if student, jump to student.php
+										//otherwise, jump to admin.php
+										} else { 
+											echo " Sorry, failed connection.";
+										}
 
 									} else {
 										echo " Wrong Password";
@@ -209,9 +242,7 @@
 				</form>
 			</div>
 
-			<div id="footer">
-				<p>Copyright 2015 Monmouth University</p>
-			</div>
+			<?php include("includes/footer.html"); ?> 
 		</div>
 	</div>
 
