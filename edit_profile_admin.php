@@ -2,17 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <!--
-
+	
 	James Reid Cooper
 	SE-611
 	2/26/15
 
-	Week 4 of PHP
+	Week 5 of PHP
 
-	1. edit_profile.php
-	2. Header/Footer
-	3. student.php
-	4. index4.php
+	1. Cookie
+	2. classes.db
+	3. Admin
+	4. Header/Footer.html
+	5. add_classes
+	6. Changed color of HTML/CSS
+	7. edit_profile_admin.php
 
 -->
 
@@ -37,7 +40,7 @@
 	}
 	?>
 
-	<?php include("includes/header-student.html"); ?>
+	<?php include("includes/header-admin.html"); ?>
 
 	<div id="content"><!-- Start of the page-specific content. --> 
 		
@@ -46,7 +49,7 @@
 
 		<?php
 
-		// Maintain the session that is being used by a particular USER
+				// Maintain the session that is being used by a particular USER
 		session_start();
 
 		if(empty($_COOKIE['uname'])){
@@ -56,7 +59,7 @@
 			$fname = $_COOKIE['fname'];
 		}
 
-		if ($_SESSION['role'] == 1){
+		if ($_SESSION['role'] == 0){
 			header('LOCATION: index4.php');
 		}
 		

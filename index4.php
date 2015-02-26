@@ -1,5 +1,9 @@
 <!-- SE611
 
+	James Reid Cooper
+	SE-611
+	2/26/15
+
 	Week 3 of PHP
 	1. create db, tables
 	2. connect to db
@@ -24,6 +28,19 @@
 
 -->
 
+<!--
+
+	Week 5 of PHP
+
+	1. Cookie
+	2. classes.db
+	3. Admin
+	4. Header/Footer.html
+	5. add_classes
+	6. Changed color of HTML/CSS
+
+-->
+
 <html>
 
 <head>
@@ -36,10 +53,11 @@
 		}
 		#container {
 			width: 800px;
+			margin: 0 auto;
 		}
 
 		#header {
-			background-color: blue;
+			background-color: rgb(0,46,106);
 			height: 60px;
 			text-align: center;
 			color: white;
@@ -52,7 +70,7 @@
 		}
 
 		#footer {
-			background-color: blue;
+			background-color: rgb(0,46,106);
 			height: 50px;
 			text-align: center;
 			color: white;
@@ -83,8 +101,13 @@
 			<div style ="color: red">
 
 				<?php
-				echo $diff;
-				echo '<br>';
+
+				session_start();
+				$_SESSION = array();
+				session_destroy();
+
+				setcookie('uname');
+				setcookie('fname');
 
 				if($_SERVER['REQUEST_METHOD'] == 'POST'){
 					if($_POST['button'] == "Login") {
@@ -152,11 +175,17 @@
 											$_SESSION['uname'] = $uname;
 											$_SESSION['fname'] = $row['fname'];
 
+										// Week 5 of PHP
+											setcookie('uname', $uname, time()+300);
+											setcookie('fname', $row['fname'], time()+300);
+
 										//check the role of the user
 										// Student = 0 Admin = 1
 											if($row['role'] == 0){
+												$_SESSION['role'] = 0;
 												header('LOCATION: student.php');
 											} else {
+												$_SESSION['role'] = 1;
 												header('LOCATION: admin.php');
 											}
 										//if student, jump to student.php

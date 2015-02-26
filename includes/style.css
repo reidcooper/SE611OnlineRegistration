@@ -33,9 +33,10 @@ body {
 	height:80px;
 	margin:0 auto;
 	width:751px;
+	background-color: rgb(0,46,106);
 }
 #header h1 {
-	color:#888;
+	color:#ffffff;
 	font-size:300%;
 	letter-spacing:-3px;
 	text-align:right;
@@ -43,7 +44,8 @@ body {
 	margin-bottom:-20px;
 }
 #header h2 {
-	color:#CCC;
+	color:#ffffff;
+	padding:11px;
 	font-size:200%;
 	letter-spacing:-2px;
 	text-align:right;
@@ -99,10 +101,12 @@ body {
 #footer {
 	border-top:1px solid #999; 
 	height:50px;
+	color: #ffffff;
 	margin:0 auto;
-	padding:10px;
+	padding:0px;
 	text-align:center;
 	width:751px;
+	background-color: rgb(0,46,106);
 }
 
 /* Added by Larry Ullman: */

@@ -13,7 +13,7 @@
 		}
 
 		#header {
-			background-color: blue;
+			background-color: rgb(0,46,106);
 			height: 60px;
 			text-align: center;
 			color: white;
@@ -26,7 +26,7 @@
 		}
 
 		#footer {
-			background-color: blue;
+			background-color: rgb(0,46,106);
 			height: 50px;
 			text-align: center;
 			color: white;
@@ -250,9 +250,7 @@
 			</div>
 		</div>
 
-		<div id="footer">
-			<p>Copyright 2015 Monmouth University</p>
-		</div>
+		<?php include("includes/footer.html"); ?>
 	</div>
 </div>
 

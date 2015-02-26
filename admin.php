@@ -2,23 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <!--
-
-	Week 4 of PHP
-
-	1. edit_profile.php
-	2. Header/Footer
-	3. student.php
-	4. index4.php
-
--->
-
-<!--
+	
+	James Reid Cooper
+	SE-611
+	2/26/15
 
 	Week 5 of PHP
 
 	1. Cookie
 	2. classes.db
 	3. Admin
+	4. Header/Footer.html
+	5. add_classes
+	6. Changed color of HTML/CSS
 
 -->
 
@@ -28,7 +24,7 @@
 </head> 
 
 <body>
-	<?php include("includes/header-student.html"); ?>
+	<?php include("includes/header-admin.html"); ?>
 	
 	<div id="content"><!-- Start of the page-specific content. --> 
 		<?php
@@ -47,9 +43,10 @@
 				$fname = $_COOKIE['fname'];
 			}
 
-			if ($_SESSION['role'] == 1){
+			if ($_SESSION['role'] == 0){
 				header('LOCATION: index4.php');
 			}
+
 
 			// session_start();
 
@@ -61,9 +58,7 @@
 		?>
 	</div>
 	<h1>Welcome, <?php echo $fname." (".$uname.")" ?></h1>
-	<div id="footer">
-		<p>Copyright 2015 Monmouth University</p>
-	</div> 
+	<?php include("includes/footer.html"); ?> 
 </body> 
 
 </html>
