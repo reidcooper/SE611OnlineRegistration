@@ -18,49 +18,16 @@
 -->
 
 <head>
-
+	<!-- Use the CSS styling from the book, maintain styling -->
 	<title>SE611</title>
-	<style>
-
-		body {
-			background-color: grey
-		}
-		#container {
-			width: 800px;
-			margin: 0 auto;
-		}
-
-		#header {
-			background-color: rgb(0,46,106);
-			height: 60px;
-			text-align: center;
-			color: white;
-			padding: 2px;
-		}
-
-		#main {
-			background-color: white;
-			height: 400px;
-		}
-
-		#footer {
-			background-color: rgb(0,46,106);
-			height: 50px;
-			text-align: center;
-			color: white;
-			padding: 2px;
-		}
-
-	</style>
+	<link rel="stylesheet" href="includes/style.css" type="text/css" media="screen" /> <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 </head>
 
 <body>
 
 	<div id="container">
-		<div id="header">
-			<h1>Online Registration System</h1>
-		</div>
+		<?php include("includes/header-admin.html"); ?>
 		
 		<div id="main">
 
@@ -78,6 +45,7 @@
 					$fname = $_COOKIE['fname'];
 				}
 
+				// If the user role is not set as 1 (ADMIN) then redirect page back to index
 				if ($_SESSION['role'] == 0){
 					header('LOCATION: index4.php');
 				}
@@ -145,9 +113,10 @@
 
 			</div>
 
-			<div id="class-registration-form">
+			<div id="class-registration-form" align="left">
+				<h1>Add Class</h1>
 				<form action="" method="POST">
-					<table align="center">
+					<table>
 						<tr>
 							<td>Subject:</td>
 							<td><input type="text" name="subject" value="<?php if(isset($_POST['subject'])) echo $_POST['subject']; ?>"></td>
@@ -176,11 +145,25 @@
 							<td>Room:</td>
 							<td><input type="text" name="room" value="<?php if(isset($_POST['room'])) echo $_POST['room']; ?>"></td>
 						</tr>
-						<tr>
-							<td><input type="submit" name="button" value="Add Class"></td>
-						</tr>
 					</table>
+					<br>
+					<input type="submit" name="button" value="Add Class">
 				</form>
+
+				<div id="class-submission-output" align="center" style ="color: red">
+
+					<br>
+					<?php
+					if (empty($error)){
+						if(isset($_POST['subject'])){
+							echo "Added: " . $subject ."-". $code ."-". $section ." ". $name ." ". $schedule ." ". $professor ." ". $room;
+						}
+					}
+					?>
+					<br>
+					<br>
+				</div>
+
 			</div>
 		</div>
 

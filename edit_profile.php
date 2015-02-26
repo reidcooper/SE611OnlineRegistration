@@ -16,7 +16,6 @@
 
 -->
 
-
 <head>
 	<title>Page Title</title>
 	<link rel="stylesheet" href="includes/style.css" type="text/css" media="screen" /> <meta http-equiv="content-type" content="text/html; charset=utf-8" />
