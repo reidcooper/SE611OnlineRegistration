@@ -5,6 +5,7 @@
 	James Reid Cooper
 	SE-611
 	2/26/15
+	Assignment 3
 
 	Week 5 of PHP
 
@@ -38,6 +39,8 @@
 				// Maintain the session that is being used by a particular USER
 				session_start();
 
+				// If there is no cookie with a username, redirect to Index
+				// Else set the cookies to the username and first name for personal greeting (possibly)
 				if(empty($_COOKIE['uname'])){
 					header('LOCATION: index4.php');
 				} else {
@@ -154,6 +157,9 @@
 
 					<br>
 					<?php
+					// For personal flair, output the class that was entered
+					// As long as there is no error, output
+					// For the life of me, I forgot why I check to make sure Subject is filled out, no sure why
 					if (empty($error)){
 						if(isset($_POST['subject'])){
 							echo "Added: " . $subject ."-". $code ."-". $section ." ". $name ." ". $schedule ." ". $professor ." ". $room;
