@@ -18,6 +18,19 @@
 
 -->
 
+<!--
+	
+	James Reid Cooper
+	SE-611
+	3/4/15
+
+	Week 6 of PHP
+
+	1. edit_classes
+	2. edit_class
+
+-->
+
 <head>
 	<!-- Use the CSS styling from the book, maintain styling -->
 	<title>SE611</title>
@@ -69,15 +82,16 @@
 
 				// when the form in this page is submitted
 				if($_SERVER['REQUEST_METHOD'] == 'POST'){
-					if($_POST['button'] == "Add Class") {
+					if($_POST['button'] == "Update") {
 
-						$subject = $_POST['subjects'];
+						$subject = $_POST['subject'];
 						$code = $_POST['code'];
 						$section = $_POST['section'];
 						$name = $_POST['name'];
 						$schedule = $_POST['schedule'];
 						$professor = $_POST['professor'];
 						$room = $_POST['room'];
+						$class_id = $_POST['class_id'];
 
 						// Define an array of error
 						$error = array();
@@ -111,11 +125,11 @@
 							$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ('Not Connected');
 							
 							// define a query
-							$q = "INSERT INTO classes (subject, code, section, name, schedule, professor, room) VALUES ('$subject', '$code', '$section', '$name', '$schedule', '$professor', '$room')";
+							$q = "UPDATE classes SET subject= '$subject', code='$code', section='$section', name='$name', schedule='$schedule', professor='$professor', room='$room' WHERE class_id = '$class_id'";
 
 							// execute the query
 							$r = mysqli_query($dbc, $q);
-							if ($r) echo "The class is inserted to the DB.";
+							if ($r) echo "Update Class";
 							else echo "Sorry, failed connection";
 
 						} else {
@@ -125,13 +139,36 @@
 							}
 						}
 					}
+				} else {
+					if(isset($_GET['id'])){
+
+						$class_id = $_GET['id'];
+
+						$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ("Cannot connect to database.");
+
+						$q = "SELECT * FROM classes WHERE class_id='$class_id'";
+
+						$r = mysqli_query($dbc, $q);
+
+						if (mysqli_num_rows($r) == 1){
+							$row = mysqli_fetch_array($r);
+							$subject = $row['subject'];
+							$code = $row['code'];
+							$section = $row['section'];
+							$name = $row['name'];
+							$schedule = $row['schedule'];
+							$professor = $row['professor'];
+							$room = $row['room'];
+						}else {
+							echo "Could Not Retrieve Class Information";
+						}
+					}
 				}
 				?>
 
 			</div>
-
 			<div id="class-registration-form" align="left">
-				<h1>Add Class</h1>
+				<h1>Update Class</h1>
 				<form action="" method="POST">
 					<table>
 						<tr>
@@ -139,42 +176,43 @@
 							<td> 
 								<?php
 
-								$subjects = array("CS", "SE", "MA", "EN", "EDU", "DA");
+								$subjectsArray = array("CS", "SE", "MA", "EN", "EDU", "DA");
 
-								dropDownMenu($subjects, "subjects", $_POST['subjects']);
+								dropDownMenu($subjectsArray, "subject", $subject);
 								?>
 							</td>
 						</tr>
 						<tr>
 							<td>Code:</td>
-							<td><input type="text" name="code" value="<?php if(isset($_POST['code'])) echo $_POST['code']; ?>"></td>
+							<td><input type="text" name="code" value="<?php if(isset($_POST['code'])){ echo $_POST['code'];} else { echo $code;}?>"></td>
 						</tr>
 						<tr>
 							<td>Section:</td>
-							<td><input type="text" name="section" value="<?php if(isset($_POST['section'])) echo $_POST['section']; ?>"></td>
+							<td><input type="text" name="section" value="<?php if(isset($_POST['section'])){ echo $_POST['section'];} else { echo $section;}?>"></td>
 						</tr>
 						<tr>
 							<td>Name:</td>
-							<td><input type="text" name="name" value="<?php if(isset($_POST['name'])) echo $_POST['name']; ?>"></td>
+							<td><input type="text" name="name" value="<?php if(isset($_POST['name'])){ echo $_POST['name'];} else { echo $name;} ?>"></td>
 						</tr>
 						<tr>
 							<td>Schedule:</td>
-							<td><input type="text" name="schedule" value="<?php if(isset($_POST['schedule'])) echo $_POST['schedule']; ?>"></td>
+							<td><input type="text" name="schedule" value="<?php if(isset($_POST['schedule'])){ echo $_POST['schedule'];} else { echo $schedule;}?>"></td>
 						</tr>
 						<tr>
 							<td>Professor:</td>
-							<td><input type="text" name="professor" value="<?php if(isset($_POST['professor'])) echo $_POST['professor']; ?>"></td>
+							<td><input type="text" name="professor" value="<?php if(isset($_POST['professor'])){ echo $_POST['professor'];} else { echo $professor;} ?>"></td>
 						</tr>
 						<tr>
 							<td>Room:</td>
-							<td><input type="text" name="room" value="<?php if(isset($_POST['room'])) echo $_POST['room']; ?>"></td>
+							<td><input type="text" name="room" value="<?php if(isset($_POST['room'])){ echo $_POST['room'];} else { echo $room;} ?>"></td>
 						</tr>
 					</table>
 					<br>
-					<input type="submit" name="button" value="Add Class">
+					<input type="submit" name="button" value="Update">
+					<input type="hidden" name="class_id" value="<?php echo $class_id;?>"/>
 				</form>
 
-				<div id="class-submission-output" align="center" style ="color: red">
+				<div id="class-update-output" align="center" style ="color: red">
 
 					<br>
 					<?php
@@ -184,7 +222,7 @@
 					// Correction! Its so it doesnt show up when the page loads, the "added" class
 					if (empty($error)){
 						if(isset($_POST['name'])){
-							echo "Added: " . $subject ."-". $code ."-". $section ." ". $name ." ". $schedule ." ". $professor ." ". $room;
+							echo "Updated: " . $subject ."-". $code ."-". $section ." ". $name ." ". $schedule ." ". $professor ." ". $room;
 						}
 					}
 					?>
