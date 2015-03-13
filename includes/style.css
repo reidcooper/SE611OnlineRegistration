@@ -99,7 +99,7 @@ body {
 
 /* footer */
 #footer {
-	border-top:1px solid #999; 
+	border-top:1px solid #999;
 	height:50px;
 	color: #ffffff;
 	margin:0 auto;
@@ -122,4 +122,12 @@ input, select, .input {
 	color: rgb(0,46,106);
 	background: #FFFFFF;
 	border:1px dotted #004080;
+}
+
+td,th {
+  text-align: center;
+}
+
+.dontCenter {
+	text-align: left;
 }

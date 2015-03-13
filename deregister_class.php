@@ -44,7 +44,7 @@ if(empty($_COOKIE['uname'])){
 }
 
 // If the user role is not set as 1 (ADMIN) then redirect page back to index
-if ($_SESSION['role'] != 1 || empty($_SESSION['role'])){
+if ($_SESSION['role'] != 0 || !isset($_SESSION['role'])){
 	header('LOCATION: index4.php');
 } else {
 	if(isset($_GET['id'])){
@@ -54,13 +54,13 @@ if ($_SESSION['role'] != 1 || empty($_SESSION['role'])){
 		//Includes database connection file for authorization
 		include("includes/db_connection.php");
 
-		$q = "DELETE FROM classes WHERE class_id='$class_id'";
+		$q = "DELETE FROM registration WHERE class_id='$class_id'";
 
 		$r = mysqli_query($dbc, $q);
 
 		if($r){
-			$message = "Successful Deletion of Class!";
-			header('LOCATION: edit_classes.php?message='.$message.'');
+			$message = "Successful Removal of Class!";
+			header('LOCATION: deregister_classes.php?message='.$message.'');
 		} else {
 			echo "Cannot Delete Record.";
 		}

@@ -45,7 +45,7 @@
 
 <head>
 
-	<title>SE611</title>
+	<title>Online Registration</title>
 	<style>
 
 		body {
@@ -129,8 +129,9 @@
 
 						// Check to see if anything in $error.
 						if (empty($error)){
-							$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ("Cannot connect to database.");
-							
+							//Includes database connection file for authorization
+							include("includes/db_connection.php");
+
 							$q = "SELECT * FROM users WHERE uname = '$uname'";
 
 							$r = mysqli_query($dbc, $q);
@@ -164,9 +165,9 @@
 
 									// execute the query
 										$r = mysqli_query($dbc, $q);
-										
+
 										if ($r) {
-											
+
 										// Week 4 of PHP
 										// start a session
 											session_start();
@@ -190,7 +191,7 @@
 											}
 										//if student, jump to student.php
 										//otherwise, jump to admin.php
-										} else { 
+										} else {
 											echo " Sorry, failed connection.";
 										}
 
@@ -207,11 +208,11 @@
 										if ($r) echo " - Attempts Left: ".(3-$check_count);
 										else echo " Sorry, failed connection.";
 
-									} 
+									}
 								}  else {
 									echo '<br>';
 									echo "You are blocked from accessing the system. You need to wait for ".gmdate("i:s", ($criteria-$diff))." (mm:ss) minutes.";
-								} 
+								}
 
 							} else {
 								echo "Wrong Username";
@@ -271,7 +272,7 @@
 				</form>
 			</div>
 
-			<?php include("includes/footer.html"); ?> 
+			<?php include("includes/footer.html"); ?>
 		</div>
 	</div>
 

@@ -2,7 +2,7 @@
 
 <head>
 
-	<title>SE611</title>
+	<title>Online Registration</title>
 	<style>
 
 		body {
@@ -68,8 +68,6 @@
 				// when we get here form other pages
 				if (isset($_GET['role'])){
 					$role = $_GET['role'];
-					echo $role;
-					echo '<br>';
 				}
 
 				// when the form in this page is submitted
@@ -95,8 +93,7 @@
 
 						if ($role == 'Student'){
 							$role = 0;
-						} 
-
+						}
 
 						// Define an array of error
 						$error = array();
@@ -138,20 +135,21 @@
 							$error[] = "Your passwords do not match.";
 						}
 
-						if( strlen($psword) < 8) {
-							$error[] = "Password too short!";
-						}
+						// Password Requirements
+						// if( strlen($psword) < 8) {
+						// 	$error[] = "Password too short!";
+						// }
 
-						if( !preg_match("#[0-9]+#", $psword) ) {
-							$error[] = "Password must include at least one number! ";
-						}
+						// if( !preg_match("#[0-9]+#", $psword) ) {
+						// 	$error[] = "Password must include at least one number! ";
+						// }
 
 						// Check to see if anything in $error.
 						if (empty($error)){
 
-							// DB Connection
-							$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ('Not Connected');
-							
+							//Includes database connection file for authorization
+							include("includes/db_connection.php");
+
 							// define a query
 							$q = "INSERT INTO users (uname, psword, fname, lname, major, address, city, state, email, phone, role, reg_date) VALUES ('$uname', SHA1('$psword'), '$fname', '$lname', '$major', '$address', '$city', '$state', '$email', '$phone', '$role', now())";
 
@@ -197,7 +195,7 @@
 						</tr>
 						<tr>
 							<td>Major:</td>
-							<td> 
+							<td>
 								<?php
 
 								$majors = array("CS", "SE", "ART", "EN", "CHEM", "BIO", "COMM", "PHY", "EDU", "MATH");

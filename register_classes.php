@@ -29,6 +29,20 @@
 	2. edit_class
 
 -->
+<!--
+
+	James Reid Cooper
+	SE-611
+	3/11/15
+
+	Week 7 of PHP
+
+	1. register_classes
+	2. register_class
+	3. db_connection
+	4. deregister_class
+
+-->
 
 <head>
 	<!-- Use the CSS styling from the book, maintain styling -->
@@ -40,7 +54,7 @@
 <body>
 
 	<div id="container">
-		<?php include("includes/header-admin.php"); ?>
+		<?php include("includes/header-student.php"); ?>
 
 		<div id="main">
 
@@ -79,7 +93,6 @@
 						if (!$r) echo "Sorry, failed connection";
 					}
 				}
-
 				if(isset($_GET['message'])){
 					echo $_GET['message'];
 				}
@@ -88,7 +101,7 @@
 			</div>
 
 			<div id="class-registration-form" align="center">
-				<h1>Edit Classes</h1>
+				<h1>Register Classes</h1>
 				<form action="" method="POST">
 					<br>
 					<table>
@@ -121,7 +134,6 @@
 						echo '<td><u>Professor</u></td>';
 						echo '<td><u>Room</u></td>';
 						echo '<td><u></u></td>';
-						echo '<td><u></u></td>';
 						echo '</tr>';
 						while ($row = mysqli_fetch_array($r)) {
 							echo '<tr>';
@@ -132,8 +144,7 @@
 							echo '<td>'.($row['schedule']).'</td>';
 							echo '<td>'.($row['professor']).'</td>';
 							echo '<td>'.($row['room']).'</td>';
-							echo '<td><a href="edit_class.php?id='.$row['class_id'].'">Edit</a></td>';
-							echo '<td><a href="delete_class.php?id='.$row['class_id'].'">Delete</a></td>';
+							echo '<td><a href="register_class.php?id='.$row['class_id'].'">Register</a></td>';
 							echo '</tr>';
 						}
 						echo '</table>';

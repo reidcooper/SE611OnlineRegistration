@@ -1,7 +1,7 @@
 <html>
 
 <!--
-	
+
 	James Reid Cooper
 	SE-611
 	2/26/15
@@ -20,7 +20,7 @@
 
 <head>
 	<!-- Use the CSS styling from the book, maintain styling -->
-	<title>SE611</title>
+	<title>Online Registration</title>
 	<link rel="stylesheet" href="includes/style.css" type="text/css" media="screen" /> <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
 </head>
@@ -28,8 +28,11 @@
 <body>
 
 	<div id="container">
-		<?php include("includes/header-admin.html"); ?>
-		
+		<?php
+			// This includes: 1) header banner 2) Session checking for admin
+			include("includes/header-admin.php");
+		?>
+
 		<div id="main">
 
 			<div style ="color: red">
@@ -49,23 +52,6 @@
 				?>
 
 				<?php
-
-				// Maintain the session that is being used by a particular USER
-				session_start();
-
-				// If there is no cookie with a username, redirect to Index
-				// Else set the cookies to the username and first name for personal greeting (possibly)
-				if(empty($_COOKIE['uname'])){
-					header('LOCATION: index4.php');
-				} else {
-					$uname = $_COOKIE['uname'];
-					$fname = $_COOKIE['fname'];
-				}
-
-				// If the user role is not set as 1 (ADMIN) then redirect page back to index
-				if ($_SESSION['role'] == 0){
-					header('LOCATION: index4.php');
-				}
 
 				// when the form in this page is submitted
 				if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -107,16 +93,15 @@
 						// Check to see if anything in $error.
 						if (empty($error)){
 
-							// DB Connection
-							$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ('Not Connected');
-							
+							//Includes database connection file for authorization
+							include("includes/db_connection.php");
+
 							// define a query
 							$q = "INSERT INTO classes (subject, code, section, name, schedule, professor, room) VALUES ('$subject', '$code', '$section', '$name', '$schedule', '$professor', '$room')";
 
 							// execute the query
 							$r = mysqli_query($dbc, $q);
-							if ($r) echo "The class is inserted to the DB.";
-							else echo "Sorry, failed connection";
+							if (!$r) echo "Sorry, failed connection";
 
 						} else {
 							foreach ($error as $msg) {
@@ -136,7 +121,7 @@
 					<table>
 						<tr>
 							<td>Subject:</td>
-							<td> 
+							<td class="dontCenter">
 								<?php
 
 								$subjects = array("CS", "SE", "MA", "EN", "EDU", "DA");
@@ -195,7 +180,7 @@
 			</div>
 		</div>
 
-		<?php include("includes/footer.html"); ?> 
+		<?php include("includes/footer.html"); ?>
 	</div>
 </div>
 

@@ -40,45 +40,23 @@
 <body>
 
 	<div id="container">
-		<?php include("includes/header-admin.php"); ?>
+		<?php include("includes/header-student.php"); ?>
 
 		<div id="main">
 
 			<div style ="color: red">
 
 				<?php
-				function dropDownMenu($array, $name, $value){
-					echo '<select name='.$name.'>';
-					foreach ($array as $ar){
-						echo '<option value="'.$ar.'"';
-
-						if($ar == $value) echo 'selected = "selected"';
-
-						echo '>'.$ar.'</option>';
-					}
-					echo '</select>';
-				}
-				?>
-
-				<?php
-
-				// when the form in this page is submitted
-				if($_SERVER['REQUEST_METHOD'] == 'POST'){
-					if($_POST['button'] == "Display Classes") {
-
-						$subject = $_POST['subjects'];
-
-						//Includes database connection file for authorization
-						include("includes/db_connection.php");
+				//Includes database connection file for authorization
+				include("includes/db_connection.php");
 
 							// define a query
-						$q = "SELECT * FROM classes WHERE subject = '$subject'";
+				$q = "SELECT * FROM registration INNER JOIN classes ON registration.class_id = classes.class_id WHERE uname = '$uname'";
 
 							// execute the query
-						$r = mysqli_query($dbc, $q);
-						if (!$r) echo "Sorry, failed connection";
-					}
-				}
+				$r = mysqli_query($dbc, $q);
+				if (!$r) echo "Sorry, failed connection";
+
 
 				if(isset($_GET['message'])){
 					echo $_GET['message'];
@@ -88,25 +66,8 @@
 			</div>
 
 			<div id="class-registration-form" align="center">
-				<h1>Edit Classes</h1>
+				<h1>De-Register Your Classes</h1>
 				<form action="" method="POST">
-					<br>
-					<table>
-						<tr>
-							<td>Subject:</td>
-							<td>
-								<?php
-
-								$subjects = array("CS", "SE", "MA", "EN", "EDU", "DA");
-
-								dropDownMenu($subjects, "subjects", $_POST['subjects']);
-								?>
-							</td>
-						</tr>
-					</table>
-					<br>
-					<input type="submit" name="button" value="Display Classes">
-					<br>
 					<br>
 					<?php
 					if (mysqli_num_rows($r)){
@@ -121,7 +82,6 @@
 						echo '<td><u>Professor</u></td>';
 						echo '<td><u>Room</u></td>';
 						echo '<td><u></u></td>';
-						echo '<td><u></u></td>';
 						echo '</tr>';
 						while ($row = mysqli_fetch_array($r)) {
 							echo '<tr>';
@@ -132,14 +92,13 @@
 							echo '<td>'.($row['schedule']).'</td>';
 							echo '<td>'.($row['professor']).'</td>';
 							echo '<td>'.($row['room']).'</td>';
-							echo '<td><a href="edit_class.php?id='.$row['class_id'].'">Edit</a></td>';
-							echo '<td><a href="delete_class.php?id='.$row['class_id'].'">Delete</a></td>';
+							echo '<td><a href="deregister_class.php?id='.$row['class_id'].'">Remove</a></td>';
 							echo '</tr>';
 						}
 						echo '</table>';
 					} else {
 						echo '<div style ="color: red">';
-						echo 'There are no classes displayed for this subject.';
+						echo 'There are no classes registered.';
 						echo '</div>';
 					}
 					?>

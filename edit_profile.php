@@ -17,9 +17,9 @@
 -->
 
 <head>
-	<title>Page Title</title>
+	<title>Online Registration</title>
 	<link rel="stylesheet" href="includes/style.css" type="text/css" media="screen" /> <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-</head> 
+</head>
 
 <body>
 	<?php
@@ -36,30 +36,12 @@
 	}
 	?>
 
-	<?php include("includes/header-student.html"); ?>
+	<?php include("includes/header-student.php"); ?>
 
-	<div id="content"><!-- Start of the page-specific content. --> 
-		
+	<div id="content"><!-- Start of the page-specific content. -->
+
 		<h1>Update Your Account Information</h1>
 		<br></br>
-
-		<?php
-
-		// Maintain the session that is being used by a particular USER
-		session_start();
-
-		if(empty($_COOKIE['uname'])){
-			header('LOCATION: index4.php');
-		} else {
-			$uname = $_COOKIE['uname'];
-			$fname = $_COOKIE['fname'];
-		}
-
-		if ($_SESSION['role'] == 1){
-			header('LOCATION: index4.php');
-		}
-		
-		?>
 
 		<div style ="color: red">
 
@@ -112,8 +94,8 @@
 						// Check to see if anything in $error.
 					if (empty($error)){
 
-							// DB Connection
-						$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ('Not Connected');
+						//Includes database connection file for authorization
+						include("includes/db_connection.php");
 
 							// define a query
 						$q = "UPDATE users SET fname= '$fname', lname='$lname', major='$major', address='$address', city='$city', state='$state', email='$email', phone='$phone' WHERE uname = '$uname'";
@@ -132,7 +114,8 @@
 				}
 			// This is for calling the values from the database from the user profile that is being used
 			} else {
-				$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ("Cannot connect to database.");
+				//Includes database connection file for authorization
+				include("includes/db_connection.php");
 
 				$q = "SELECT * FROM users WHERE uname = '$uname'";
 
@@ -169,7 +152,7 @@
 					</tr>
 					<tr>
 						<td>Major:</td>
-						<td> 
+						<td class="dontCenter">
 							<?php
 
 							$majors_1 = array("CS", "SE", "ART", "EN", "CHEM", "BIO", "COMM", "PHY", "EDU", "MATH");
@@ -190,7 +173,7 @@
 						<td>
 							State:
 						</td>
-						<td>
+						<td class="dontCenter">
 							<?php
 
 							$state_1 = array('AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID',
@@ -219,7 +202,7 @@
 			</form>
 		</div>
 	</div>
-	<?php include("includes/footer.html"); ?> 
-</body> 
+	<?php include("includes/footer.html"); ?>
+</body>
 
 </html>
