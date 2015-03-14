@@ -127,7 +127,8 @@
 
 						$class_id = $_GET['id'];
 
-						$dbc = mysqli_connect('localhost', 'root', 'password', 'registration') or die ("Cannot connect to database.");
+						//Includes database connection file for authorization
+						include("includes/db_connection.php");
 
 						$q = "SELECT * FROM classes WHERE class_id='$class_id'";
 

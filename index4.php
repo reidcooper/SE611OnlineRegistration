@@ -109,6 +109,9 @@
 				setcookie('uname');
 				setcookie('fname');
 
+				// If gives you a warning about not having a time zone set or not relying on server time
+				date_default_timezone_set("America/New_York");
+
 				if($_SERVER['REQUEST_METHOD'] == 'POST'){
 					if($_POST['button'] == "Login") {
 

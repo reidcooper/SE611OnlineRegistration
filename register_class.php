@@ -51,7 +51,7 @@ session_start();
 
 // If there is no cookie with a username, redirect to Index
 // Else set the cookies to the username and first name for personal greeting (possibly)
-if(empty(($_COOKIE['uname']))){
+if(empty($_COOKIE['uname'])){
 	header('LOCATION: index4.php');
 } else {
 	$uname = $_COOKIE['uname'];

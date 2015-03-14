@@ -122,32 +122,38 @@
 					<br>
 					<br>
 					<?php
-					if (mysqli_num_rows($r)){
+					if (isset($r)){
+						if (mysqli_num_rows($r)){
 
-						echo '<table>';
-						echo '<tr>';
-						echo '<td><u>Subject</u></td>';
-						echo '<td><u>Code</u></td>';
-						echo '<td><u>Section</u></td>';
-						echo '<td><u>Name</u></td>';
-						echo '<td><u>Schedule</u></td>';
-						echo '<td><u>Professor</u></td>';
-						echo '<td><u>Room</u></td>';
-						echo '<td><u></u></td>';
-						echo '</tr>';
-						while ($row = mysqli_fetch_array($r)) {
+							echo '<table>';
 							echo '<tr>';
-							echo '<td>'.($row['subject']).'</td>';
-							echo '<td>'.($row['code']).'</td>';
-							echo '<td>'.($row['section']).'</td>';
-							echo '<td>'.($row['name']).'</td>';
-							echo '<td>'.($row['schedule']).'</td>';
-							echo '<td>'.($row['professor']).'</td>';
-							echo '<td>'.($row['room']).'</td>';
-							echo '<td><a href="register_class.php?id='.$row['class_id'].'">Register</a></td>';
+							echo '<td><u>Subject</u></td>';
+							echo '<td><u>Code</u></td>';
+							echo '<td><u>Section</u></td>';
+							echo '<td><u>Name</u></td>';
+							echo '<td><u>Schedule</u></td>';
+							echo '<td><u>Professor</u></td>';
+							echo '<td><u>Room</u></td>';
+							echo '<td><u></u></td>';
 							echo '</tr>';
+							while ($row = mysqli_fetch_array($r)) {
+								echo '<tr>';
+								echo '<td>'.($row['subject']).'</td>';
+								echo '<td>'.($row['code']).'</td>';
+								echo '<td>'.($row['section']).'</td>';
+								echo '<td>'.($row['name']).'</td>';
+								echo '<td>'.($row['schedule']).'</td>';
+								echo '<td>'.($row['professor']).'</td>';
+								echo '<td>'.($row['room']).'</td>';
+								echo '<td><a href="register_class.php?id='.$row['class_id'].'">Register</a></td>';
+								echo '</tr>';
+							}
+							echo '</table>';
+						} else {
+							echo '<div style ="color: red">';
+							echo 'There are no classes displayed for this subject.';
+							echo '</div>';
 						}
-						echo '</table>';
 					} else {
 						echo '<div style ="color: red">';
 						echo 'There are no classes displayed for this subject.';
