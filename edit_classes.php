@@ -146,7 +146,7 @@
 						}
 					} else {
 						echo '<div style ="color: red">';
-						echo 'There are no classes displayed for this subject.';
+						echo 'Please Select a Subject and then Click \'Display Classes\'.';
 						echo '</div>';
 					}
 					?>
