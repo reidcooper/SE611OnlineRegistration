@@ -8,6 +8,21 @@
 
 -->
 
+<!--
+
+    James Reid Cooper
+    SE-611
+    3/25/15
+
+    Week 8 of PHP
+
+    1. Forgotten Password
+    2. log_out.php
+    3. created db log
+    4. log_in function for index4.php
+
+-->
+
 <div id="header">
 	<h1>Monmouth University Online Registration</h1>
 	<h2>Where Leaders Look Forward</h2>
@@ -15,17 +30,14 @@
 
 <div id="navigation">
 	<ul>
-		<li><a href="student.php">Home Page</a></li> 
+		<li><a href="student.php">Home Page</a></li>
 		<li><a href="edit_profile.php">Edit Profile</a></li>
 		<li><a href="change_password_student.php">Change Password</a></li>
 		<li><a href="register_classes.php">Register Classes</a></li>
 		<li><a href="deregister_classes.php">De-Register Classes</a></li>
-	</ul> 
+	</ul>
 </div>
 <div id="content">
-	<div id="log-out" align="right">
-		<a href="index4.php">Log Out</a>
-	</div>
 	<?php
 	// Maintain the session that is being used by a particular USER
 	session_start();
@@ -43,3 +55,6 @@
 	}
 
 	?>
+	<div id="log-out" align="right">
+		<a href="includes/log_out.php">Log Out</a>
+	</div>

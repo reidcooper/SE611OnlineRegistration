@@ -41,6 +41,21 @@
 
 -->
 
+<!--
+
+    James Reid Cooper
+    SE-611
+    3/25/15
+
+    Week 8 of PHP
+
+    1. Forgotten Password
+    2. log_out.php
+    3. created db log
+    4. log_in function for index4.php
+
+-->
+
 <html>
 
 <head>
@@ -102,6 +117,19 @@
 
 				<?php
 
+				// Logging In Log
+				function logging_in($uname){
+					include("includes/db_connection.php");
+					$action = "Log In";
+
+					// define a query
+					$bb = "INSERT INTO log (uname, time, action) VALUES ('$uname', now(), '$action')";
+
+					// execute the query
+					$qq = mysqli_query($dbc, $bb);
+					if (!$qq) echo "Sorry, failed connection";
+				}
+
 				session_start();
 				$_SESSION = array();
 				session_destroy();
@@ -109,8 +137,6 @@
 				setcookie('uname');
 				setcookie('fname');
 
-				// If gives you a warning about not having a time zone set or not relying on server time
-				date_default_timezone_set("America/New_York");
 
 				if($_SERVER['REQUEST_METHOD'] == 'POST'){
 					if($_POST['button'] == "Login") {
@@ -187,9 +213,11 @@
 										// Student = 0 Admin = 1
 											if($row['role'] == 0){
 												$_SESSION['role'] = 0;
+												logging_in($uname);
 												header('LOCATION: student.php');
 											} else {
 												$_SESSION['role'] = 1;
+												logging_in($uname);
 												header('LOCATION: admin.php');
 											}
 										//if student, jump to student.php
@@ -257,6 +285,10 @@
 					</table>
 					<input type="submit" name="button" value="Login"/>
 				</form>
+			</div>
+
+			<div id="forgot_password" align="center">
+				Forgot Password? <a href="forgot_password.php">Click Here!</a>
 			</div>
 
 			<div id="register" align="center">
