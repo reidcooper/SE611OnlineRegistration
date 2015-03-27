@@ -35,6 +35,7 @@
 		<li><a href="change_password_student.php">Change Password</a></li>
 		<li><a href="register_classes.php">Register Classes</a></li>
 		<li><a href="deregister_classes.php">De-Register Classes</a></li>
+        <li><a href="#">Not Used</a></li>
 	</ul>
 </div>
 <div id="content">

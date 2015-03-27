@@ -115,27 +115,27 @@
 
 							echo '<table>';
 							echo '<tr>';
-							echo '<td><u>Subject</u></td>';
-							echo '<td><u>Code</u></td>';
-							echo '<td><u>Section</u></td>';
-							echo '<td><u>Name</u></td>';
-							echo '<td><u>Schedule</u></td>';
-							echo '<td><u>Professor</u></td>';
-							echo '<td><u>Room</u></td>';
-							echo '<td><u></u></td>';
-							echo '<td><u></u></td>';
+							echo '<td id="edit_classes_table_row"><u>Subject</u></td>';
+							echo '<td id="edit_classes_table_row"><u>Code</u></td>';
+							echo '<td id="edit_classes_table_row"><u>Section</u></td>';
+							echo '<td id="edit_classes_table_row"><u>Name</u></td>';
+							echo '<td id="edit_classes_table_row"><u>Schedule</u></td>';
+							echo '<td id="edit_classes_table_row"><u>Professor</u></td>';
+							echo '<td id="edit_classes_table_row"><u>Room</u></td>';
+							echo '<td id="edit_classes_table_row"><u></u></td>';
+							echo '<td id="edit_classes_table_row"><u></u></td>';
 							echo '</tr>';
 							while ($row = mysqli_fetch_array($r)) {
 								echo '<tr>';
-								echo '<td>'.($row['subject']).'</td>';
-								echo '<td>'.($row['code']).'</td>';
-								echo '<td>'.($row['section']).'</td>';
-								echo '<td>'.($row['name']).'</td>';
-								echo '<td>'.($row['schedule']).'</td>';
-								echo '<td>'.($row['professor']).'</td>';
-								echo '<td>'.($row['room']).'</td>';
-								echo '<td><a href="edit_class.php?id='.$row['class_id'].'">Edit</a></td>';
-								echo '<td><a href="delete_class.php?id='.$row['class_id'].'">Delete</a></td>';
+								echo '<td id="edit_classes_table_row">'.($row['subject']).'</td>';
+								echo '<td id="edit_classes_table_row">'.($row['code']).'</td>';
+								echo '<td id="edit_classes_table_row">'.($row['section']).'</td>';
+								echo '<td id="edit_classes_table_row">'.($row['name']).'</td>';
+								echo '<td id="edit_classes_table_row">'.($row['schedule']).'</td>';
+								echo '<td id="edit_classes_table_row">'.($row['professor']).'</td>';
+								echo '<td id="edit_classes_table_row">'.($row['room']).'</td>';
+								echo '<td id="edit_classes_table_row"><a href="edit_class.php?id='.$row['class_id'].'">Edit</a></td>';
+								echo '<td id="edit_classes_table_row"><a href="delete_class.php?id='.$row['class_id'].'">Delete</a></td>';
 								echo '</tr>';
 							}
 							echo '</table>';

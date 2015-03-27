@@ -35,7 +35,7 @@
 		<li><a href="change_password_admin.php">Change Password</a></li>
 		<li><a href="add_classes.php">Add Classes</a></li>
 		<li><a href="edit_classes.php">Edit Classes</a></li>
-		<li><a href="view_log.php">View Log</a></li>
+		<li><a href="view_logs_admin.php">View Log</a></li>
 	</ul>
 </div>
 <div id="content">

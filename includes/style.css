@@ -131,3 +131,16 @@ td,th {
 .dontCenter {
 	text-align: left;
 }
+
+table#log_table {
+	font-size: 1.2em;
+	padding: 0px;
+}
+
+td#log_table_row {
+	padding-right: 50px;
+}
+
+td#edit_classes_table_row {
+	padding-right: 10px;
+}
