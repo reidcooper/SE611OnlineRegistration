@@ -276,7 +276,7 @@
 					<table>
 						<tr>
 							<td>Username:</td>
-							<td><input type="text" name="uname" value= <?php if(isset($_POST['uname'])) echo $_POST['uname']; ?> ></td>
+							<td><input type="text" name="uname" value="<?php if(isset($_POST['uname'])) echo $_POST['uname']; ?>"></td>
 						</tr>
 						<tr>
 							<td>Password:</td>
